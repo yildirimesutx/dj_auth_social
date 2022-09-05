@@ -1,6 +1,22 @@
+{% extends 'user/base.html' %}
+
+
+
+
+{% block content %}
+    
+
+
 <h1>Home Page</h1>
 
+{% if request.user.is_authenticated %}
+<h3>Welcome {{ user.socialaccount_set.all.0.extra_data.name| title }}</h3>
+{% else %}
+<h2>Welcome Guest!</h2>
+{% endif %}
 
-<h3> Welcome {{ request.user.first_name  | title }} {{ request.user.last_name  | title }} </h3>
 
-{% comment %} <img src= "{{ user.picture }}" alt=""> {% endcomment %}
+
+<img src= "{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="">
+
+{% endblock content %}

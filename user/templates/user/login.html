@@ -11,12 +11,38 @@
         {% csrf_token %} {{form.as_p}}
         <button type="submit" class="btn btn-danger mt-2">Login</button>
     </form>
-    {% comment %} <p>Need an account?  <a href="{% url 'register' %}">Sign Up Now</a></p> {% endcomment %}
-    
-          <form id="google_login" enctype="multipart/form-data" action="{% provider_login_url 'google' %}" method="post">
+    {% comment %} <p>Need an account?  <a href="{% url 'register' %}">Sign Up Now</a></p>  {% endcomment %}
+   
+          <form id="google_login" enctype="multipart/form-data" 
+          action="{% provider_login_url 'google' %}" method="post">
             {% csrf_token %}
             <input type="submit" class="btn btn-success" value="Sign in with Google">
-          </form> 
+          </form>  
 
           {% comment %} bu tag degault yapıya yönlendirdi {% endcomment %}
           {% comment %} <a href="{% provider_login_url 'google' %}">Login with Google</a> {% endcomment %}
+
+
+
+
+
+{% comment %} {% load socialaccount %}
+<html>
+          
+<head>
+<title>Google Registration</title>
+</head>
+          
+<body>
+   
+    {% if user.is_authenticated %}
+    <h1>My Google Login Project</h1>
+    <p>Welcome, {{ user.username }} !</p>
+          
+    {% else %}
+    <h1>My Google Login Project</h1>
+    <a href="{% provider_login_url 'google' %}">Login with Google</a>
+              {% endif %}
+          
+</body>
+</html>           {% endcomment %}
